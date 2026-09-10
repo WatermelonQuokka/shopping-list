@@ -6,7 +6,18 @@ string ccy = "kr";
 static string Ask(string option)
 {
     Console.Write(option + " ");
-    return Console.ReadLine();
+    return Console.ReadLine()!;
+}
+
+static void ShowList(List<string>product, List<int>price, string ccy)
+{
+        int total = 0;
+        for(int i = 0; i < product.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {product[i]} - {price[i]}{ccy}");
+            total += price[i];
+        }
+        Console.WriteLine($"Total: {total} {ccy}");
 }
 
 while (true)
@@ -42,19 +53,27 @@ while (true)
     else if(choice == "2")
     {
         Console.Clear();
-        int total = 0;
-        for(int i = 0; i < product.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {product[i]} - {price[i]}{ccy}");
-            total += price[i];
-        }
-        Console.WriteLine($"Total: {total} {ccy}");
+        ShowList(product, price, ccy);
         Ask("Press Enter to return to the menu: ");
     }
     // removes both product and price from the lists
     else if(choice == "3")
     {
-        
+        Console.Clear();
+        ShowList(product, price, ccy);
+        int num;
+        string numToDelete;
+        do
+        {
+            numToDelete = Ask("Type in the number of the product you want to remove: ");
+        }
+        while(!int.TryParse(numToDelete, out num));
+        int index = num - 1;
+        if(index >= 0 && index < product.Count)
+        {
+            product.RemoveAt(index);
+            price.RemoveAt(index);
+        }
     }
     // exits the loop
     else if(choice == "9")
