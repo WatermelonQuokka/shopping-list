@@ -41,7 +41,15 @@ while (true)
     // shows the full lists with total price
     else if(choice == "2")
     {
-        
+        Console.Clear();
+        int total = 0;
+        for(int i = 0; i < product.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {product[i]} - {price[i]}{ccy}");
+            total += price[i];
+        }
+        Console.WriteLine($"Total: {total} {ccy}");
+        Ask("Press Enter to return to the menu: ");
     }
     // removes both product and price from the lists
     else if(choice == "3")
