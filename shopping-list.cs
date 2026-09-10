@@ -18,7 +18,7 @@ static void ShowList(List<string>product, List<int>price, string ccy)
         int total = 0;
         for(int i = 0; i < product.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {product[i]} - {price[i]}{ccy}");
+            Console.WriteLine($"{i + 1}. {product[i]} - {price[i]} {ccy}");
             total += price[i];
         }
         Console.WriteLine($"Total: {total} {ccy}");
@@ -58,7 +58,7 @@ while (true)
     {
         Console.Clear();
         ShowList(product, price, ccy);
-        Ask("Press Enter to return to the menu:");
+        Ask("Press Enter to return to the menu.");
     }
     // removes both product and price from the lists
     else if(choice == "3")
@@ -77,6 +77,11 @@ while (true)
         {
             product.RemoveAt(index);
             price.RemoveAt(index);
+        }
+        else
+        {
+            Console.WriteLine($"There is no product on position {index}");
+            Ask("Press Enter to return to menu.");
         }
     }
     // exits the loop
