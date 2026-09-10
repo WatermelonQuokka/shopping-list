@@ -3,12 +3,16 @@ List<int> price = [];
 // possible to change currency here
 string ccy = "kr";
 
-static string Ask(string option)
+// a method to simplify where user input is needed instead of
+// writing console.readline everywhere
+static string Ask(string AskForInput)
 {
-    Console.Write(option + " ");
+    Console.Write(AskForInput + " ");
     return Console.ReadLine()!;
 }
 
+// a method to show a numbered list of products, prices
+// currency and total price of the list
 static void ShowList(List<string>product, List<int>price, string ccy)
 {
         int total = 0;
@@ -37,12 +41,12 @@ while (true)
     if(choice == "1")
     {
         Console.Clear();
-        string productName = Ask("Enter product name: ");
+        string productName = Ask("Enter product:");
         string priceForProduct;
         int priceNum;
         do
         {
-        priceForProduct = Ask($"Enter price of {productName}: ");
+        priceForProduct = Ask($"Enter price of {productName}:");
         }
         while(!int.TryParse(priceForProduct, out priceNum));
         product.Add(productName);
@@ -54,7 +58,7 @@ while (true)
     {
         Console.Clear();
         ShowList(product, price, ccy);
-        Ask("Press Enter to return to the menu: ");
+        Ask("Press Enter to return to the menu:");
     }
     // removes both product and price from the lists
     else if(choice == "3")
@@ -65,7 +69,7 @@ while (true)
         string numToDelete;
         do
         {
-            numToDelete = Ask("Type in the number of the product you want to remove: ");
+            numToDelete = Ask("Type in the number of the product you want to remove:");
         }
         while(!int.TryParse(numToDelete, out num));
         int index = num - 1;
