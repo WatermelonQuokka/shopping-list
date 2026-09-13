@@ -80,7 +80,7 @@ while (true)
         }
         else
         {
-            Console.WriteLine($"There is no product on position {index}");
+            Console.WriteLine($"There is no product on that position");
             Ask("Press Enter to return to menu.");
         }
     }
